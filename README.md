@@ -8,6 +8,7 @@ Just my personal repo to keep track of the Leetcode problems I solve
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/buj8/LEETCODE/tree/master/0001-two-sum) |
+| [0004-median-of-two-sorted-arrays](https://github.com/buj8/LEETCODE/tree/master/0004-median-of-two-sorted-arrays) |
 | [0036-valid-sudoku](https://github.com/buj8/LEETCODE/tree/master/0036-valid-sudoku) |
 | [0049-group-anagrams](https://github.com/buj8/LEETCODE/tree/master/0049-group-anagrams) |
 | [0217-contains-duplicate](https://github.com/buj8/LEETCODE/tree/master/0217-contains-duplicate) |
@@ -37,6 +38,7 @@ Just my personal repo to keep track of the Leetcode problems I solve
 ## Divide and Conquer
 |  |
 | ------- |
+| [0004-median-of-two-sorted-arrays](https://github.com/buj8/LEETCODE/tree/master/0004-median-of-two-sorted-arrays) |
 | [0347-top-k-frequent-elements](https://github.com/buj8/LEETCODE/tree/master/0347-top-k-frequent-elements) |
 ## Heap (Priority Queue)
 |  |
@@ -62,4 +64,8 @@ Just my personal repo to keep track of the Leetcode problems I solve
 |  |
 | ------- |
 | [0036-valid-sudoku](https://github.com/buj8/LEETCODE/tree/master/0036-valid-sudoku) |
+## Binary Search
+|  |
+| ------- |
+| [0004-median-of-two-sorted-arrays](https://github.com/buj8/LEETCODE/tree/master/0004-median-of-two-sorted-arrays) |
 <!---LeetCode Topics End-->
