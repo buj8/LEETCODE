@@ -4,13 +4,14 @@ class Solution:
         for num in nums:
             frequency[num] += 1 
 
-        freqlist = [[] for i in range(len(nums) + 1)]
+        freqlist = [[] for _ in range(len(nums) + 1)]
         for num, freq in frequency.items():
             freqlist[freq].append(num)
         
         topfreqs = []
         for i in reversed(freqlist):
-            for num in i:
-                topfreqs.append(num)
-                if k == len(topfreqs):
-                    return topfreqs  
+            if i:
+                for num in i:
+                    topfreqs.append(num)
+                    if k == len(topfreqs):
+                        return topfreqs  
