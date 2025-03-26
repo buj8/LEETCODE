@@ -11,7 +11,6 @@ class Solution:
         topfreqs = []
         for i in reversed(freqlist):
             if i:
-                for num in i:
-                    topfreqs.append(num)
-                    if k == len(topfreqs):
-                        return topfreqs  
+                topfreqs.extend(i)
+                if k <= len(topfreqs):
+                    return topfreqs[:k]  
