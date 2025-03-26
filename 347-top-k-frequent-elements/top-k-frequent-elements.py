@@ -3,11 +3,14 @@ class Solution:
         frequency = defaultdict(int)
         for num in nums:
             frequency[num] += 1 
-        freqlist = []
+
+        freqlist = [[] for i in range(len(nums) + 1)]
         for num, freq in frequency.items():
-            freqlist.append([num, freq])
-        freqlist.sort(key=lambda x: x[1], reverse=True)
+            freqlist[freq].append(num)
+        
         topfreqs = []
-        for i in range(k):
-            topfreqs.append(freqlist[i][0])
-        return topfreqs
+        for i in reversed(freqlist):
+            for num in i:
+                topfreqs.append(num)
+                if k == len(topfreqs):
+                    return topfreqs  
