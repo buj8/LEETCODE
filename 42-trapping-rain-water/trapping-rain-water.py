@@ -3,12 +3,9 @@ class Solution:
         total_water = 0
         n = len(height)
         l, r = 0, n-1
-        lmax, rmax = 0, 0
-        while l < r:
-            lmax = max(height[l], lmax)
-            rmax = max(height[r], rmax)
+        lmax, rmax = height[l], height[r]
+        while l < r: 
             current_max = min(lmax, rmax)
-
             if height[l] < current_max:
                 total_water += current_max - height[l]
             if height[r] < current_max:
@@ -16,6 +13,8 @@ class Solution:
 
             if height[l] > height[r]:
                 r -= 1
+                rmax = max(height[r], rmax)
             else:
                 l += 1
+                lmax = max(height[l], lmax)
         return total_water
