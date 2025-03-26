@@ -6,11 +6,11 @@ class Solution:
         for i in range(len(nums)-2):
             l, r = i+1, len(nums)-1
             while l < r:
-                lrsum = nums[l]+nums[r]
-                if lrsum == -nums[i]:
+                sum3 = nums[i]+nums[l]+nums[r]
+                if sum3 == 0:
                     res_set.add((nums[i], nums[l], nums[r]))
                     r-=1
-                elif lrsum > -nums[i]:
+                elif sum3 > 0:
                     r-=1
                 else:
                     l+=1
