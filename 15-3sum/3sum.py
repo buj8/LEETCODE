@@ -3,7 +3,7 @@ class Solution:
         res_set = set()
         nums.sort()
 
-        for i in range(len(nums)):
+        for i in range(len(nums)-2):
             l, r = i+1, len(nums)-1
             while l < r:
                 lrsum = nums[l]+nums[r]
