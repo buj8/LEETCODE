@@ -4,6 +4,10 @@ class Solution:
         nums.sort()
 
         for i in range(len(nums)-2):
+            
+            if nums[i] > 0:
+                break
+
             l, r = i+1, len(nums)-1
             while l < r:
                 sum3 = nums[i]+nums[l]+nums[r]
