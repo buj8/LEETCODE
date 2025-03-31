@@ -8,6 +8,5 @@ class Solution:
             maxprofit = max(maxprofit, profit) 
             if prices[buy] > prices[sell]:
                 buy = sell
-            sell += 1
 
         return maxprofit
