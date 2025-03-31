@@ -1,14 +1,14 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        count, left, res = defaultdict(int), 0, 0
-        maxfreq = 0
-        for right, curr_char in enumerate(s):
-            count[curr_char] += 1
-            maxfreq = max(maxfreq, count[curr_char])
+        count = defaultdict(int)
+        left, mostreps, maxlen = 0, 0, 0
 
-            while right - left - maxfreq >= k:
+        for right, char in enumerate(s):
+            count[char] += 1
+            mostreps = max(mostreps, count[char])
+            while right - left >= mostreps + k:
                 count[s[left]] -= 1
                 left += 1
-            res = max(res, right - left + 1)
-        
-        return res
+            maxlen = max(maxlen, right - left + 1)
+
+        return maxlen
