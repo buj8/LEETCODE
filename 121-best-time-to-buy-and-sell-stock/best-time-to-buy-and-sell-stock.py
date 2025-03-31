@@ -3,7 +3,7 @@ class Solution:
         maxprofit = 0
         n = len(prices)
         l, r = 0, 1
-        while l < r and r < n:
+        while r < n:
             maxprofit = max(maxprofit, prices[r]-prices[l]) 
             if prices[l] >= prices[r]:
                 l = r
