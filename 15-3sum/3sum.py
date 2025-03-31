@@ -1,8 +1,10 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res = set()
+        res = []
         nums.sort()
         for i, num in enumerate(nums):
+            if i > 0 and num == nums[i-1]:
+                continue
             if num > 0:
                 break
             target = -num
@@ -10,10 +12,15 @@ class Solution:
             while l < r:
                 sumLR = nums[l] + nums[r]
                 if sumLR == target:
-                    res.add((num, nums[l], nums[r]))
-                    l += 1 
+                    res.append((num, nums[l], nums[r]))
+                    while l < r and nums[l] == nums[l+1]:
+                        l+=1
+                    while l < r and nums[r] == nums[r-1]:
+                        r-=1
+                    l += 1
+                    r -= 1 
                 elif sumLR < target:
                     l += 1
                 else:
                     r -= 1
-        return list(res)
+        return res
