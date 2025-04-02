@@ -5,13 +5,8 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def maxDepthAux(self, root: Optional[TreeNode], level: int):
-        if not root:
-            return level
-        
-        level += 1
-
-        return max(self.maxDepthAux(root.left, level), self.maxDepthAux(root.right, level))
-    
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        return self.maxDepthAux(root, 0)
+        if not root:
+            return 0
+
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
