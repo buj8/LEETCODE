@@ -8,13 +8,7 @@ class Solution:
     def aux(self, root, lowest, highest):
         if root.val <= lowest or root.val >= highest:
             return False
-
-        if root.left and root.val <= root.left.val:
-            return False
-
-        if root.right and root.val >= root.right.val:
-            return False
-        
+            
         left_valid = self.aux(root.left, lowest, min(highest, root.val)) if root.left else True
         right_valid = self.aux(root.right, max(lowest, root.val), highest) if root.right else True
         
