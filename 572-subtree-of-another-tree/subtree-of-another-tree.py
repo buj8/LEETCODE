@@ -21,9 +21,10 @@ class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         if not root:
             return False
-            
-        if self.isSameTree(root, subRoot):
-            return True
+
+        if root.val == subRoot.val:    
+            if self.isSameTree(root, subRoot):
+                return True
 
 
         return self.isSubtree(root.right, subRoot) or self.isSubtree(root.left, subRoot)
