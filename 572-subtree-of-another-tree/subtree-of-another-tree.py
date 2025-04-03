@@ -15,12 +15,8 @@ class Solution:
         if p.val != q.val:
             return False
         
-        right_same = self.isSameTree(p.right, q.right)
-        left_same = self.isSameTree(p.left, q.left)
         
-        result = right_same and left_same
-        
-        return result
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
  
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         if not root:
@@ -28,15 +24,6 @@ class Solution:
             
         if self.isSameTree(root, subRoot):
             return True
-            
-        left_result = self.isSubtree(root.left, subRoot)
-        
-        if left_result:
-            return True
-            
-        right_result = self.isSubtree(root.right, subRoot)
-        
-        if right_result:
-            return True
 
-        return False
+
+        return self.isSubtree(root.right, subRoot) or self.isSubtree(root.left, subRoot)
