@@ -26,7 +26,6 @@ class Solution:
         if not root:
             return False
             
-        
         if self.isSameTree(root, subRoot):
             return True
             
