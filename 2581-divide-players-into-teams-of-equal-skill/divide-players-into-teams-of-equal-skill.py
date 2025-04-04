@@ -1,24 +1,19 @@
 class Solution:
     def dividePlayers(self, skill: List[int]) -> int:
-        res = 0
-        target = sum(skill) / (len(skill) / 2)
-
-        available = defaultdict(int)
-        
+        res = 0 
         skill.sort()
 
-        for s in range(len(skill)//2, len(skill)):
-            available[skill[s]] += 1
-        
+        l, r = 0, len(skill)-1
 
-        for i in range(len(skill)//2):
-            needed = target - skill[i]
-            if needed in available:
-                available[needed] -= 1
-                if available[needed] == 0:
-                    del available[needed]
-                res += skill[i] * needed
+        target = skill[l] + skill[r]
+
+        while l < r:
+            current = skill[l] + skill[r]
+            if target == current:
+                res += skill[l] * skill[r]
+                l += 1
+                r -= 1
             else:
                 return -1
 
-        return int(res) 
+        return res
