@@ -12,7 +12,6 @@ class Solution:
 
             for s in strs:
                 if len(s) == current_index or s[current_index] != letter:
-                    print(s, current_index, letter)
                     return prefix
 
             prefix += letter
