@@ -21,7 +21,7 @@ class Solution:
             return res
 
         while len(queue) > 0:
-            r, c = queue.pop(0)
+            r, c = queue.pop()
             if (r, c) not in visited:
                 visited.add((r, c))
                 image[r][c] = color
