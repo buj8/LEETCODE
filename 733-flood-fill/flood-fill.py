@@ -1,12 +1,13 @@
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        # BFS
-        
         h, w = len(image), len(image[0])
         
         visited = set()
         queue = [(sr, sc)]
         base_color = image[sr][sc]
+
+        if base_color == color:
+            return image
 
         def neighbors(r, c):
             candidates = [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]
@@ -21,7 +22,9 @@ class Solution:
             return res
 
         while len(queue) > 0:
-            r, c = queue.pop()
+            # queue.pop(0) -> BFS
+            # queue.pop() -> DFS
+            r, c = queue.pop(0)
             if (r, c) not in visited:
                 visited.add((r, c))
                 image[r][c] = color
