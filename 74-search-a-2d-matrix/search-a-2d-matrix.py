@@ -3,14 +3,11 @@ class Solution:
         m = len(matrix)
         n = len(matrix[0])
 
-        def mIndex(i):
-            return (i//n, i%n)
-
         low, high = 0, (m*n)-1
 
         while low <= high:
             mid = low + (high - low) // 2
-            mmid = mIndex(mid)
+            mmid = (mid//n, mid%n)
             if matrix[mmid[0]][mmid[1]] == target:
                 return True
             if target < matrix[mmid[0]][mmid[1]]:
