@@ -1,41 +1,31 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        if len(grid) == 0:
+        if not grid:
             return 0
 
         h, w = len(grid), len(grid[0])
         seen = set()
         n_islands = 0
-
-        def getNeighbors(r, c):
-            neighbors = []
-            candidates = [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]
-            for candidate in candidates:
-                if (
-                    candidate[0] >= 0 and candidate[0] < h
-                    and candidate[1] >= 0 and candidate[1] < w
-                    and grid[candidate[0]][candidate[1]] == '1' 
-                ):
-                    neighbors.append(candidate)
-            return neighbors
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # Definido una sola vez
 
         def bfs(sr, sc):
             queue = deque([(sr, sc)])
-            while len(queue) > 0:
-                r, c = queue.pop()  
-                if (r, c) not in seen:                  
-                    seen.add((r, c))
-                    for neighbor in getNeighbors(r, c):
-                        queue.append(neighbor)
+            seen.add((sr, sc))  # Marcar como visitado al agregar
+            
+            while queue:
+                r, c = queue.popleft()  # O(1) en vez de O(n)
+                
+                for dr, dc in directions:
+                    nr, nc = r + dr, c + dc
+                    if (0 <= nr < h and 0 <= nc < w and 
+                        grid[nr][nc] == '1' and (nr, nc) not in seen):
+                        queue.append((nr, nc))
+                        seen.add((nr, nc))  # Marcar al agregar, no al procesar
 
-
-        for i, row in enumerate(grid):
-            for j, square in enumerate(row):
-                if square == '1' and (i, j) not in seen:
+        for i in range(h):
+            for j in range(w):
+                if grid[i][j] == '1' and (i, j) not in seen:
                     bfs(i, j)
                     n_islands += 1
 
         return n_islands
-
-
-    
