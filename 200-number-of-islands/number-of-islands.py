@@ -22,7 +22,7 @@ class Solution:
         def bfs(sr, sc):
             queue = [(sr, sc)]
             while len(queue) > 0:
-                r, c = queue.pop(0)  
+                r, c = queue.pop()  
                 if (r, c) not in seen:                  
                     seen.add((r, c))
                     for neighbor in getNeighbors(r, c):
