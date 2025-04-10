@@ -1,14 +1,15 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        count = defaultdict(int)
-        current_max = (0, -1)
-        majority = math.floor(len(nums)/2)
-        for num in nums:
-            count[num] += 1
-            if count[num] > current_max[0]:
-                current_max = (count[num], num)
-                if current_max[0] > majority:
-                    return current_max[1]
-
-        return current_max[1]
+        # Booyer-Moore Majority Vote Algorithm
+        count = 1
+        candidate = nums[0]
+        for i in range(1, len(nums)):
+            if candidate == nums[i]:
+                count += 1
+            else:
+                count -= 1
+                if count == 0:
+                    candidate = nums[i]
+                    count = 1
+        return candidate
 
