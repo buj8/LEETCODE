@@ -3,9 +3,14 @@ class Solution:
         res = 0
         for num in range(low, high+1):
             digits = str(num)
-            if len(digits) % 2 == 0:
-                digits_l = [int(digits[i]) for i in range(len(digits)//2)]
-                digits_r = [int(digits[i]) for i in range(len(digits)//2, len(digits))]
-                if sum(digits_l) == sum(digits_r):
-                    res += 1
+            if len(digits) % 2 != 0:
+                continue
+                
+            half = len(digits) // 2
+            left_sum = sum(int(digits[i]) for i in range(half))
+            right_sum = sum(int(digits[i]) for i in range(half, len(digits)))
+            
+            if left_sum == right_sum:
+                res += 1
+                
         return res
