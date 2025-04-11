@@ -8,7 +8,6 @@ class Solution:
         i2 = n - 1
 
         while i2 > -1:
-            print(i1, i2)
             if i1 >= 0 and nums1[i1] > nums2[i2]:
                 nums1[i] = nums1[i1]
                 i1 -= 1
