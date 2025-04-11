@@ -11,7 +11,6 @@ class Solution:
         #   - R = starts as the last num of the array
         # >>> Time complexity -> O(n) * O(n)  = O(n^2)
         # >>> Space complexity -> O(1) (not taking into account the output array)
-        print(nums)
 
         for i, num in enumerate(nums):
             # Avoid repetition
