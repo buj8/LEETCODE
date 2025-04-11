@@ -5,9 +5,5 @@ class Solution:
         res = ""
         for i in range(minlen):
             res += word1[i] + word2[i]
-        if len(word1) == len(word2):
-            return res
-        if len(word1) > len(word2):
-            return res + word1[n2:]
-        return res + word2[n1:]
         
+        return res + word1[minlen:] + word2[minlen:]
