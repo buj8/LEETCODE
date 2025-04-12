@@ -14,6 +14,4 @@ class Solution:
             else:
                 high = mid - 1
 
-        if mid_sq < x:
-            return mid
         return high
