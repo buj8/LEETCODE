@@ -26,7 +26,6 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = temp
-        slow.next = None
 
         # Merge the two halfs
         first, second = head, prev
