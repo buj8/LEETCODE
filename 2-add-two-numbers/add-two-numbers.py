@@ -18,7 +18,7 @@ class Solution:
                 l2 = l2.next
             total = a + b + carry
             new_val = total % 10
-            carry = math.floor(total / 10)
+            carry = total // 10
             curr.next = ListNode(val=new_val)
             curr = curr.next
 
