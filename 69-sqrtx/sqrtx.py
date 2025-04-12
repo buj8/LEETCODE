@@ -6,7 +6,6 @@ class Solution:
         low, high = 0, x
         while low <= high:
             mid = low + (high - low) // 2
-            print(low, mid, high)
             mid_sq = mid * mid
             if mid_sq == x:
                 return mid
