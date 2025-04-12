@@ -1,6 +1,6 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
-        if x <= 1:
+        if x == 0:
             return x 
 
         low, high = 0, x
