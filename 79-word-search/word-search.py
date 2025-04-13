@@ -1,42 +1,46 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-
-        def getNeighbors(x, y, seen):
-            candidates = [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]
-            neighbors = []
-            for candidate in candidates:
-                if (
-                    candidate not in seen
-                    and candidate[0] >= 0 and candidate[0] < len(board)
-                    and candidate[1] >= 0 and candidate[1] < len(board[0])
-                ):
-                    neighbors.append(candidate)
-            return neighbors
-                    
-        def dfs(x, y, i, seen):
-            _seen = seen.copy()
-            _seen.add((x,y))
-
-            if board[x][y] != word[i]:
+        rows, cols = len(board), len(board[0])
+        
+        # Optimize: If the word is longer than the board can possibly hold
+        if len(word) > rows * cols:
+            return False
+        
+        # Count characters in the word and board to enable early pruning
+        word_counts = Counter(word)
+        board_counts = Counter(char for row in board for char in row)
+        for char, count in word_counts.items():
+            if board_counts[char] < count:
                 return False
-
-            if i == len(word) - 1:
+        
+        def dfs(row, col, index, visited):
+            # Base case: reached the end of the word
+            if index == len(word):
                 return True
-            
-            neighbors = getNeighbors(x, y, seen)
-
-            if not neighbors:
+                
+            # Check bounds and if the current cell matches the next character
+            if (row < 0 or row >= rows or col < 0 or col >= cols or 
+                (row, col) in visited or board[row][col] != word[index]):
                 return False
-
-            paths = []
-            for n in neighbors:
-                paths.append(dfs(n[0], n[1], i + 1, _seen))
-
-            return any(paths)
-
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if dfs(i, j, 0, set()):
+            
+            # Mark as visited
+            visited.add((row, col))
+            
+            # Check all four directions
+            result = (dfs(row + 1, col, index + 1, visited) or
+                    dfs(row - 1, col, index + 1, visited) or
+                    dfs(row, col + 1, index + 1, visited) or
+                    dfs(row, col - 1, index + 1, visited))
+            
+            # Backtrack by removing from visited
+            visited.remove((row, col))
+            
+            return result
+        
+        # Try starting from each cell
+        for i in range(rows):
+            for j in range(cols):
+                if board[i][j] == word[0] and dfs(i, j, 0, set()):
                     return True
-
+        
         return False
