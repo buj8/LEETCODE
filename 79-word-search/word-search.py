@@ -18,7 +18,7 @@ class Solution:
             _seen.add((x,y))
 
             if board[x][y] != word[i]:
-                return
+                return False
 
             if i == len(word) - 1:
                 return True
@@ -26,7 +26,7 @@ class Solution:
             neighbors = getNeighbors(x, y, seen)
 
             if not neighbors:
-                return
+                return False
 
             paths = []
             for n in neighbors:
