@@ -10,7 +10,7 @@ class Solution:
 
         while max_heap or queue:
             # Put all the tasks that have finished it's gap back in the heap
-            while queue and queue[0][1] <= time:
+            if queue and queue[0][1] <= time:
                 heapq.heappush(max_heap, queue.popleft()[0])
             
             # If we still don't have anything available, move to the next timeslot
