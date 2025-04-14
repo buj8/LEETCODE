@@ -3,15 +3,14 @@ class Solution:
         res = ""
 
         def getMax(l, r):
-            longest = ""
             while l >= 0 and r < len(s):
-                if s[l] == s[r] and (r - l + 1) >= len(longest):
+                if s[l] == s[r]:
                     longest = s[l:r+1]
                     l -= 1
                     r += 1
                 else:
                     break
-            return longest
+            return s[l+1:r]
         
         for i in range(len(s)):
             odd = getMax(i, i)
